@@ -109,4 +109,19 @@ export const videoData = [
     url: 'https://www.shadertoy.com/view/tXtGzN',
     filePath: './assets/videos/shader022.mp4',
   },
+  {
+    id: 23,
+    url: 'https://www.shadertoy.com/view/tXtGzN',
+    filePath: './assets/videos/shader023.mp4',
+  },
+  {
+    id: 24,
+    url: 'https://www.shadertoy.com/view/w3tGDr',
+    filePath: './assets/videos/shader024.mp4',
+  },
+  {
+    id: 25,
+    url: 'https://www.shadertoy.com/view/tXtGDr',
+    filePath: './assets/videos/shader025.mp4',
+  },
 ]
