@@ -199,4 +199,29 @@ export const videoData = [
     url: 'https://www.shadertoy.com/view/3XV3DD',
     filePath: './assets/videos/shader040.mp4',
   },
+  {
+    id: 41,
+    url: 'https://www.shadertoy.com/view/33yGRG',
+    filePath: './assets/videos/shader041.mp4',
+  },
+  {
+    id: 42,
+    url: 'https://www.shadertoy.com/view/WXV3RK',
+    filePath: './assets/videos/shader042.mp4',
+  },
+  {
+    id: 43,
+    url: 'https://www.shadertoy.com/view/tXKGRc',
+    filePath: './assets/videos/shader043.mp4',
+  },
+  {
+    id: 44,
+    url: 'https://www.shadertoy.com/view/33y3WG',
+    filePath: './assets/videos/shader044.mp4',
+  },
+  {
+    id: 45,
+    url: 'https://www.shadertoy.com/view/wXGGDV',
+    filePath: './assets/videos/shader045.mp4',
+  },
 ]
