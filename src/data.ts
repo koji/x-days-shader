@@ -224,4 +224,14 @@ export const videoData = [
     url: 'https://www.shadertoy.com/view/wXGGDV',
     filePath: './assets/videos/shader045.mp4',
   },
+  {
+    id: 46,
+    url: 'https://www.shadertoy.com/view/WXyGWd', //www.shadertoy.com/view/wXGGDV',
+    filePath: './assets/videos/shader046.mp4',
+  },
+  {
+    id: 47,
+    url: 'https://www.shadertoy.com/view/3X3XRn',
+    filePath: './assets/videos/shader047.mp4',
+  },
 ]
