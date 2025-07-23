@@ -3,7 +3,7 @@ import { VideoCard } from './components/VideoCard'
 import { SearchAndFilters } from './components/SearchAndFilters'
 import { DetailModal } from './components/DetailModal'
 import { BackToTop } from './components/BackToTop'
-import { LoadingSkeleton, SearchFiltersSkeleton } from './components/LoadingSkeleton'
+import { GridSkeleton, SearchFiltersSkeleton } from './components/LoadingSkeleton'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { videoData } from './data'
 import { FilterState, Shader } from './types'
@@ -167,7 +167,7 @@ function App() {
           {isLoading ? (
             <>
               <SearchFiltersSkeleton />
-              <LoadingSkeleton count={6} />
+              <GridSkeleton count={6} />
             </>
           ) : (
             <>

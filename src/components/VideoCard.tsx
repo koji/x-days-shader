@@ -73,21 +73,32 @@ export const VideoCard: React.FC<VideoCardProps> = ({ shader, onClick }) => {
 
         {/* Error State */}
         {hasError && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-900 text-gray-400">
-            <svg className="w-12 h-12 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-900 text-gray-400 p-4">
+            <svg className="w-12 h-12 mb-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <p className="text-sm">Failed to load video</p>
-            <button
-              onClick={() => {
-                setHasError(false);
-                setIsLoading(true);
-                setShouldLoadVideo(true);
-              }}
-              className="mt-2 px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-xs rounded transition-colors"
-            >
-              Retry
-            </button>
+            <p className="text-sm text-center mb-3">Failed to load video</p>
+            <div className="flex flex-col sm:flex-row gap-2">
+              <button
+                onClick={() => {
+                  setHasError(false);
+                  setIsLoading(true);
+                  setShouldLoadVideo(true);
+                }}
+                className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-xs rounded transition-colors"
+              >
+                Retry
+              </button>
+              <a
+                href={shader.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1 bg-gray-700 hover:bg-gray-600 text-white text-xs rounded transition-colors"
+                onClick={(e) => e.stopPropagation()}
+              >
+                View Original
+              </a>
+            </div>
           </div>
         )}
 
