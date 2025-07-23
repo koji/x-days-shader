@@ -1,8 +1,8 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, memo } from 'react'
 import { SearchAndFiltersProps, SortOption } from '../types'
 import { debounce } from '../utils'
 
-export const SearchAndFilters: React.FC<SearchAndFiltersProps> = ({
+const SearchAndFiltersComponent: React.FC<SearchAndFiltersProps> = ({
   filterState,
   onFilterChange,
   totalResults,
@@ -174,3 +174,5 @@ export const SearchAndFilters: React.FC<SearchAndFiltersProps> = ({
     </div>
   )
 }
+
+export const SearchAndFilters = memo(SearchAndFiltersComponent)

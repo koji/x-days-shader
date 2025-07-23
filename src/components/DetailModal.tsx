@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react'
+import React, { useEffect, useCallback, memo } from 'react'
 import { Shader } from '../types'
 import { SocialShare } from './SocialShare'
 
@@ -12,7 +12,7 @@ interface DetailModalProps {
   hasNext: boolean
 }
 
-export const DetailModal: React.FC<DetailModalProps> = ({
+const DetailModalComponent: React.FC<DetailModalProps> = ({
   shader,
   isOpen,
   onClose,
@@ -198,3 +198,5 @@ export const DetailModal: React.FC<DetailModalProps> = ({
     </div>
   )
 }
+
+export const DetailModal = memo(DetailModalComponent)

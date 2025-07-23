@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useCallback } from 'react'
 import { VideoCard } from './components/VideoCard'
 import { SearchAndFilters } from './components/SearchAndFilters'
 import { DetailModal } from './components/DetailModal'
@@ -33,40 +33,49 @@ function App() {
   }, [filterState])
 
   // Handle filter changes
-  const handleFilterChange = (newFilters: Partial<FilterState>) => {
+  const handleFilterChange = useCallback((newFilters: Partial<FilterState>) => {
     setFilterState(prev => ({ ...prev, ...newFilters }))
-  }
+  }, [])
 
   // Modal handlers
-  const handleOpenModal = (shader: Shader) => {
+  const handleOpenModal = useCallback((shader: Shader) => {
     setSelectedShader(shader)
     setIsModalOpen(true)
-  }
+  }, [])
 
-  const handleCloseModal = () => {
+  const handleCloseModal = useCallback(() => {
     setIsModalOpen(false)
     setSelectedShader(null)
-  }
+  }, [])
 
-  const handlePreviousShader = () => {
+  const handlePreviousShader = useCallback(() => {
     if (!selectedShader) return
     const currentIndex = filteredShaders.findIndex(s => s.id === selectedShader.id)
     if (currentIndex > 0) {
       setSelectedShader(filteredShaders[currentIndex - 1])
     }
-  }
+  }, [selectedShader, filteredShaders])
 
-  const handleNextShader = () => {
+  const handleNextShader = useCallback(() => {
     if (!selectedShader) return
     const currentIndex = filteredShaders.findIndex(s => s.id === selectedShader.id)
     if (currentIndex < filteredShaders.length - 1) {
       setSelectedShader(filteredShaders[currentIndex + 1])
     }
-  }
+  }, [selectedShader, filteredShaders])
 
   const currentShaderIndex = selectedShader 
     ? filteredShaders.findIndex(s => s.id === selectedShader.id)
     : -1
+
+  // Reset filters handler
+  const handleResetFilters = useCallback(() => {
+    handleFilterChange({
+      searchQuery: '',
+      dayRange: { min: 1, max: maxDay },
+      sortBy: 'day-asc'
+    })
+  }, [handleFilterChange, maxDay])
 
   // Simulate initial loading and animate the counter
   useEffect(() => {
@@ -201,11 +210,7 @@ function App() {
                       Try adjusting your search terms or filters to find more shaders.
                     </p>
                     <button
-                      onClick={() => handleFilterChange({
-                        searchQuery: '',
-                        dayRange: { min: 1, max: maxDay },
-                        sortBy: 'day-asc'
-                      })}
+                      onClick={handleResetFilters}
                       className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-200"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

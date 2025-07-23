@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback, memo } from 'react'
 
-export const BackToTop: React.FC = () => {
+const BackToTopComponent: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
 
   // Show button when page is scrolled down
-  const toggleVisibility = () => {
+  const toggleVisibility = useCallback(() => {
     const scrolled = document.documentElement.scrollTop
     const maxHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
     
@@ -18,22 +18,22 @@ export const BackToTop: React.FC = () => {
     // Calculate scroll progress
     const progress = (scrolled / maxHeight) * 100
     setScrollProgress(progress)
-  }
+  }, [])
 
   // Smooth scroll to top
-  const scrollToTop = () => {
+  const scrollToTop = useCallback(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     })
-  }
+  }, [])
 
   useEffect(() => {
     window.addEventListener('scroll', toggleVisibility)
     return () => {
       window.removeEventListener('scroll', toggleVisibility)
     }
-  }, [])
+  }, [toggleVisibility])
 
   return (
     <>
@@ -103,3 +103,5 @@ export const BackToTop: React.FC = () => {
     </>
   )
 }
+
+export const BackToTop = memo(BackToTopComponent)

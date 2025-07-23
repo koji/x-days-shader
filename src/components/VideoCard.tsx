@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { Shader } from '../types';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
@@ -7,7 +7,7 @@ interface VideoCardProps {
   onClick?: () => void
 }
 
-export const VideoCard: React.FC<VideoCardProps> = ({ shader, onClick }) => {
+const VideoCardComponent: React.FC<VideoCardProps> = ({ shader, onClick }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
@@ -208,3 +208,5 @@ export const VideoCard: React.FC<VideoCardProps> = ({ shader, onClick }) => {
     </div>
   );
 };
+
+export const VideoCard = memo(VideoCardComponent)

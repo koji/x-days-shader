@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, memo, useCallback } from 'react'
 import { Shader } from '../types'
 
 interface SocialShareProps {
@@ -6,14 +6,14 @@ interface SocialShareProps {
   className?: string
 }
 
-export const SocialShare: React.FC<SocialShareProps> = ({ shader, className = '' }) => {
+const SocialShareComponent: React.FC<SocialShareProps> = ({ shader, className = '' }) => {
   const [copied, setCopied] = useState(false)
 
   const shareUrl = `${window.location.origin}#shader-${shader.day}`
   const shareTitle = `Check out this amazing shader: Day ${shader.day} - ${shader.title || `Shader ${shader.day.toString().padStart(3, '0')}`}`
   const shareDescription = shader.description || 'A creative coding journey through shader programming'
 
-  const handleCopyLink = async () => {
+  const handleCopyLink = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(shareUrl)
       setCopied(true)
@@ -21,7 +21,7 @@ export const SocialShare: React.FC<SocialShareProps> = ({ shader, className = ''
     } catch (err) {
       console.error('Failed to copy link:', err)
     }
-  }
+  }, [shareUrl])
 
   const shareLinks = [
     {
@@ -66,9 +66,9 @@ export const SocialShare: React.FC<SocialShareProps> = ({ shader, className = ''
     }
   ]
 
-  const handleShare = (url: string) => {
+  const handleShare = useCallback((url: string) => {
     window.open(url, '_blank', 'width=600,height=400')
-  }
+  }, [])
 
   return (
     <div className={`flex flex-col space-y-4 ${className}`}>
@@ -142,3 +142,5 @@ export const SocialShare: React.FC<SocialShareProps> = ({ shader, className = ''
     </div>
   )
 }
+
+export const SocialShare = memo(SocialShareComponent)
