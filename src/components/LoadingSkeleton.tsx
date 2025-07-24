@@ -56,12 +56,18 @@ export const SearchFiltersSkeleton: React.FC = () => {
         
         {/* Range Slider Skeleton */}
         <div className="lg:w-80">
-          <div className="h-4 bg-gray-700 rounded w-32 mb-2"></div>
+          <div className="h-4 bg-gray-700 rounded w-20 mb-3"></div>
           <div className="space-y-3">
-            <div className="h-2 bg-gray-700 rounded-lg"></div>
+            <div className="relative h-2 bg-gray-700 rounded-lg">
+              <div className="absolute top-1/2 left-1/4 w-5 h-5 bg-gray-600 rounded-full -translate-y-1/2"></div>
+              <div className="absolute top-1/2 right-1/4 w-5 h-5 bg-gray-600 rounded-full -translate-y-1/2"></div>
+            </div>
             <div className="flex justify-between">
               <div className="h-3 bg-gray-700 rounded w-8"></div>
               <div className="h-3 bg-gray-700 rounded w-8"></div>
+            </div>
+            <div className="flex justify-center">
+              <div className="h-4 bg-gray-700 rounded w-20"></div>
             </div>
           </div>
         </div>

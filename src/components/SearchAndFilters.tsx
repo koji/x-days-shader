@@ -1,6 +1,7 @@
 import { useState, useCallback, memo } from 'react'
 import { SearchAndFiltersProps, SortOption } from '../types'
 import { debounce } from '../utils'
+import { DualRangeSlider } from './DualRangeSlider'
 
 const SearchAndFiltersComponent: React.FC<SearchAndFiltersProps> = ({
   filterState,
@@ -28,11 +29,11 @@ const SearchAndFiltersComponent: React.FC<SearchAndFiltersProps> = ({
     onFilterChange({ sortBy })
   }
 
-  const handleDayRangeChange = (min: number, max: number) => {
+  const handleDayRangeChange = useCallback((range: { min: number; max: number }) => {
     onFilterChange({
-      dayRange: { min, max }
+      dayRange: range
     })
-  }
+  }, [onFilterChange])
 
   const handleClearFilters = () => {
     setLocalSearchQuery('')
@@ -90,33 +91,16 @@ const SearchAndFiltersComponent: React.FC<SearchAndFiltersProps> = ({
 
         {/* Day Range Slider */}
         <div className="lg:w-80">
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Day Range: {filterState.dayRange.min} - {filterState.dayRange.max}
+          <label className="block text-sm font-medium text-gray-300 mb-3">
+            Day Range
           </label>
-          <div className="space-y-3">
-            <div className="flex items-center space-x-4">
-              <input
-                type="range"
-                min="1"
-                max={maxDay}
-                value={filterState.dayRange.min}
-                onChange={(e) => handleDayRangeChange(parseInt(e.target.value), filterState.dayRange.max)}
-                className="flex-1 h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer slider"
-              />
-              <input
-                type="range"
-                min="1"
-                max={maxDay}
-                value={filterState.dayRange.max}
-                onChange={(e) => handleDayRangeChange(filterState.dayRange.min, parseInt(e.target.value))}
-                className="flex-1 h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer slider"
-              />
-            </div>
-            <div className="flex justify-between text-xs text-gray-400">
-              <span>Day 1</span>
-              <span>Day {maxDay}</span>
-            </div>
-          </div>
+          <DualRangeSlider
+            min={1}
+            max={maxDay}
+            value={filterState.dayRange}
+            onChange={handleDayRangeChange}
+            step={1}
+          />
         </div>
 
         {/* Sort Options */}
