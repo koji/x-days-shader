@@ -2,6 +2,9 @@ import React, { useState, useEffect, memo } from 'react';
 import { Shader } from '../types';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
+
+const MAX_RANDOM_DELAY_MS = 200;
+
 interface VideoCardProps {
   shader: Shader
   onClick?: () => void
@@ -11,7 +14,7 @@ const VideoCardComponent: React.FC<VideoCardProps> = ({ shader, onClick }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
-  
+
   // Intersection observer for lazy loading
   const { elementRef, hasIntersected } = useIntersectionObserver({
     threshold: 0.1,
@@ -34,19 +37,19 @@ const VideoCardComponent: React.FC<VideoCardProps> = ({ shader, onClick }) => {
       // Add a small delay to stagger video loading
       const timer = setTimeout(() => {
         setShouldLoadVideo(true);
-      }, Math.random() * 200); // Random delay 0-200ms
-      
+      }, Math.random() * MAX_RANDOM_DELAY_MS); // Random delay 0-200ms
+
       return () => clearTimeout(timer);
     }
   }, [hasIntersected, shouldLoadVideo]);
 
   return (
-    <div 
+    <div
       ref={elementRef}
       className="group bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl shadow-xl overflow-hidden border border-gray-700 hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20 hover:scale-[1.02] transform-gpu cursor-pointer"
       onClick={onClick}
     >
-      
+
       {/* Day Number Badge */}
       <div className="absolute top-3 left-3 z-10 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg backdrop-blur-sm">
         Day {shader.day}

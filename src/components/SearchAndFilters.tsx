@@ -3,6 +3,9 @@ import { SearchAndFiltersProps, SortOption } from '../types'
 import { debounce } from '../utils'
 import { DualRangeSlider } from './DualRangeSlider'
 
+
+const DEBOUNCE_DELAY_MS = 300;
+
 const SearchAndFiltersComponent: React.FC<SearchAndFiltersProps> = ({
   filterState,
   onFilterChange,
@@ -15,7 +18,7 @@ const SearchAndFiltersComponent: React.FC<SearchAndFiltersProps> = ({
   const debouncedSearch = useCallback(
     debounce((query: string) => {
       onFilterChange({ searchQuery: query })
-    }, 300),
+    }, DEBOUNCE_DELAY_MS),
     [onFilterChange]
   )
 
@@ -44,7 +47,7 @@ const SearchAndFiltersComponent: React.FC<SearchAndFiltersProps> = ({
     })
   }
 
-  const hasActiveFilters = 
+  const hasActiveFilters =
     filterState.searchQuery.trim() !== '' ||
     filterState.dayRange.min !== 1 ||
     filterState.dayRange.max !== maxDay ||
@@ -53,7 +56,7 @@ const SearchAndFiltersComponent: React.FC<SearchAndFiltersProps> = ({
   return (
     <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 mb-8">
       <div className="flex flex-col lg:flex-row gap-6">
-        
+
         {/* Search Input */}
         <div className="flex-1">
           <label htmlFor="search" className="block text-sm font-medium text-gray-300 mb-2">
@@ -79,6 +82,7 @@ const SearchAndFiltersComponent: React.FC<SearchAndFiltersProps> = ({
                   setLocalSearchQuery('')
                   onFilterChange({ searchQuery: '' })
                 }}
+                aria-label="Clear search"
                 className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-white transition-colors"
               >
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -132,7 +136,7 @@ const SearchAndFiltersComponent: React.FC<SearchAndFiltersProps> = ({
               {totalResults} {totalResults === 1 ? 'shader' : 'shaders'} found
             </span>
           </div>
-          
+
           {totalResults === 0 && filterState.searchQuery && (
             <div className="flex items-center space-x-2 text-amber-400">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
