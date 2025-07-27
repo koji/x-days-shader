@@ -29,6 +29,12 @@ export const ShaderCard: React.FC<ShaderCardProps> = ({ shader, fragmentShaderSo
       return;
     }
 
+    // Clean up previous renderer
+    if (rendererRef.current) {
+      rendererRef.current.dispose();
+      rendererRef.current = null;
+    }
+
 
 
     const canvas = canvasRef.current;

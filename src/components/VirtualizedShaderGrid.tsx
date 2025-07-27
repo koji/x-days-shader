@@ -23,7 +23,7 @@ export const VirtualizedShaderGrid: React.FC<VirtualizedShaderGridProps> = ({
   selectedTag
 }) => {
   const [shaderSources, setShaderSources] = useState<ShaderSourceCache>({});
-  const [visibleShaders, setVisibleShaders] = useState<ShaderInfo[]>([]);
+  const [visibleShaders, setVisibleShaders] = useState<Set<string>>(new Set());
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Filter shaders based on search and tags
@@ -82,16 +82,26 @@ export const VirtualizedShaderGrid: React.FC<VirtualizedShaderGridProps> = ({
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          const shaderId = entry.target.getAttribute('data-shader-id');
+          const fragmentShader = entry.target.getAttribute('data-fragment-shader');
+
           if (entry.isIntersecting) {
-            const shaderId = entry.target.getAttribute('data-shader-id');
-            const fragmentShader = entry.target.getAttribute('data-fragment-shader');
             if (shaderId && fragmentShader) {
               loadShaderSource(shaderId, fragmentShader);
             }
+            // Mark as visible
+            setVisibleShaders(prev => new Set([...prev, shaderId || '']));
+          } else {
+            // Mark as not visible
+            setVisibleShaders(prev => {
+              const newSet = new Set(prev);
+              newSet.delete(shaderId || '');
+              return newSet;
+            });
           }
         });
       },
-      { rootMargin: '100px' }
+      { rootMargin: '200px' }
     );
 
     // Observe all shader cards
@@ -104,7 +114,7 @@ export const VirtualizedShaderGrid: React.FC<VirtualizedShaderGridProps> = ({
   // Render shader card with intersection observer
   const renderShaderCard = useCallback((shader: ShaderInfo) => {
     const shaderData = shaderSources[shader.id];
-    const needsLoading = !shaderData || (!shaderData.source && !shaderData.loading);
+    const isVisible = visibleShaders.has(shader.id);
 
     return (
       <div
@@ -117,6 +127,7 @@ export const VirtualizedShaderGrid: React.FC<VirtualizedShaderGridProps> = ({
           <div className="aspect-video bg-muted animate-pulse rounded-lg" />
         ) : shaderData?.source ? (
           <ShaderCard
+            key={`${shader.id}-${isVisible ? 'visible' : 'hidden'}-${shaderData.source.substring(0, 50)}`}
             shader={shader}
             fragmentShaderSource={shaderData.source}
           />
@@ -125,7 +136,7 @@ export const VirtualizedShaderGrid: React.FC<VirtualizedShaderGridProps> = ({
         )}
       </div>
     );
-  }, [shaderSources]);
+  }, [shaderSources, visibleShaders]);
 
 
 
