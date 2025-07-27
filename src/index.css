@@ -2,79 +2,115 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom range slider styles */
-.slider::-webkit-slider-thumb {
-  appearance: none;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  cursor: pointer;
-  border: 2px solid #1f2937;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transition: all 0.2s ease;
+/* Shader showcase design system - inspired by digital art and shader aesthetics */
+
+@layer base {
+  :root {
+    /* Light theme - Clean minimal aesthetic */
+    --background: 0 0% 98%;
+    --foreground: 220 10% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 10% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 10% 10%;
+
+    --primary: 195 100% 50%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 210 20% 94%;
+    --secondary-foreground: 220 10% 10%;
+
+    --muted: 210 20% 94%;
+    --muted-foreground: 220 8% 46%;
+
+    --accent: 195 100% 60%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 195 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Shader-specific design tokens */
+    --glass-bg: 0 0% 100% / 0.05;
+    --glass-border: 0 0% 100% / 0.1;
+    --glow-primary: 195 100% 50% / 0.3;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark theme - Cyberpunk shader aesthetic */
+    --background: 220 20% 6%;
+    --foreground: 0 0% 95%;
+
+    --card: 220 15% 8%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 220 15% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 180 100% 60%;
+    --primary-foreground: 220 20% 6%;
+
+    --secondary: 220 15% 12%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 220 15% 12%;
+    --muted-foreground: 220 8% 65%;
+
+    --accent: 180 100% 70%;
+    --accent-foreground: 220 20% 6%;
+
+    --destructive: 0 85% 65%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 220 15% 15%;
+    --input: 220 15% 15%;
+    --ring: 180 100% 60%;
+
+    /* Dark theme shader tokens */
+    --glass-bg: 0 0% 0% / 0.1;
+    --glass-border: 0 0% 100% / 0.05;
+    --glow-primary: 180 100% 60% / 0.4;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
 }
 
-.slider::-webkit-slider-thumb:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 12px rgba(59, 130, 246, 0.4);
-}
-
-.slider::-moz-range-thumb {
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  cursor: pointer;
-  border: 2px solid #1f2937;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transition: all 0.2s ease;
-}
-
-.slider::-moz-range-thumb:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 12px rgba(59, 130, 246, 0.4);
-}
-
-.slider::-webkit-slider-track {
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-  height: 8px;
-  border-radius: 4px;
-}
-
-.slider::-moz-range-track {
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-  height: 8px;
-  border-radius: 4px;
-  border: none;
-}
-
-/* Performance optimizations */
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* GPU acceleration for animations */
-.animate-pulse,
-.transition-all,
-.transition-colors,
-.transition-opacity,
-.transition-transform {
-  will-change: transform, opacity;
-}
-
-/* Reduce motion for accessibility */
-@media (prefers-reduced-motion: reduce) {
+@layer base {
   * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
   }
 }
