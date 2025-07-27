@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import * as THREE from 'three';
-import vertexShader from '../shaders/vertex.vert';
+import { vertexShader } from '../lib/shaders';
 
 interface ShaderCanvasProps {
   className?: string;

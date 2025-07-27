@@ -7,6 +7,7 @@ import { Button } from '../components/ui/button';
 import { ArrowLeft, Home } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { useFPS } from '../hooks/use-fps';
+import { loadShader } from '../lib/shaders';
 
 const ShaderViewContent: React.FC = () => {
   const { shaderId } = useParams<{ shaderId: string }>();
@@ -19,10 +20,10 @@ const ShaderViewContent: React.FC = () => {
   useEffect(() => {
     if (!shader) return;
 
-    const loadShader = async () => {
+    const loadShaderSource = async () => {
       try {
-        const module = await import(/* @vite-ignore */ `../shaders/${shader.fragmentShader}`);
-        setShaderSource(module.default);
+        const shaderSource = await loadShader(shader.fragmentShader);
+        setShaderSource(shaderSource);
       } catch (error) {
         console.error(`Failed to load shader ${shader.fragmentShader}:`, error);
         setShaderSource(`
@@ -36,7 +37,7 @@ const ShaderViewContent: React.FC = () => {
       }
     };
 
-    loadShader();
+    loadShaderSource();
   }, [shader]);
 
   if (!shader) {

@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
 import { ShaderInfo } from '../data/shaders';
+import { vertexShader } from '../lib/shaders';
 
 interface ShaderCardProps {
   shader: ShaderInfo;
@@ -25,6 +26,12 @@ export const ShaderCard: React.FC<ShaderCardProps> = ({ shader, fragmentShaderSo
       return;
     }
 
+    // Test if the shader source is actually loaded
+    console.log(`Shader source for ${shader.name}:`, {
+      length: fragmentShaderSource.length,
+      preview: fragmentShaderSource.substring(0, 100)
+    });
+
     const canvas = canvasRef.current;
     const renderer = new THREE.WebGLRenderer({
       canvas,
@@ -45,26 +52,31 @@ export const ShaderCard: React.FC<ShaderCardProps> = ({ shader, fragmentShaderSo
       material = new THREE.ShaderMaterial({
         uniforms: {
           iTime: { value: 0 },
-          iResolution: { value: new THREE.Vector3() }
+          iResolution: { value: new THREE.Vector3() },
+          iMouse: { value: new THREE.Vector4(0, 0, 0, 0) }
         },
-        vertexShader: `void main() { gl_Position = vec4(position, 1.0); }`,
+        vertexShader,
         fragmentShader: fragmentShaderSource
       });
     } catch (error) {
-      console.warn(`Shader compilation error for ${shader.name}:`, error);
+      console.error(`Shader compilation error for ${shader.name}:`, error);
       // Fallback to a simple shader
       material = new THREE.ShaderMaterial({
         uniforms: {
           iTime: { value: 0 },
-          iResolution: { value: new THREE.Vector3() }
+          iResolution: { value: new THREE.Vector3() },
+          iMouse: { value: new THREE.Vector4(0, 0, 0, 0) }
         },
-        vertexShader: `void main() { gl_Position = vec4(position, 1.0); }`,
+        vertexShader,
         fragmentShader: `
           uniform float iTime;
           uniform vec3 iResolution;
+          uniform vec4 iMouse;
+          
           void main() {
             vec2 uv = gl_FragCoord.xy / iResolution.xy;
-            gl_FragColor = vec4(uv, 0.5 + 0.5 * sin(iTime), 1.0);
+            vec3 col = 0.5 + 0.5 * cos(iTime + uv.xyx + vec3(0,2,4));
+            gl_FragColor = vec4(col, 1.0);
           }
         `
       });
@@ -83,6 +95,13 @@ export const ShaderCard: React.FC<ShaderCardProps> = ({ shader, fragmentShaderSo
       const width = rect.width;
       const height = rect.height;
 
+      console.log(`Resizing canvas for ${shader.name}: ${width}x${height}`);
+
+      if (width <= 0 || height <= 0) {
+        console.warn(`Canvas has zero or negative dimensions for ${shader.name}: ${width}x${height}`);
+        return;
+      }
+
       renderer.setSize(width, height, false);
       material.uniforms.iResolution.value.set(width, height, 1);
     };
@@ -95,7 +114,10 @@ export const ShaderCard: React.FC<ShaderCardProps> = ({ shader, fragmentShaderSo
     const frameInterval = 1000 / targetFPS;
 
     const animate = () => {
-      if (!renderer || !scene || !camera || !material) return;
+      if (!renderer || !scene || !camera || !material) {
+        console.warn(`Missing renderer/scene/camera/material for ${shader.name}`);
+        return;
+      }
 
       const currentTime = performance.now();
       if (currentTime - lastFrameTime < frameInterval) {
@@ -107,7 +129,12 @@ export const ShaderCard: React.FC<ShaderCardProps> = ({ shader, fragmentShaderSo
       const time = clockRef.current.getElapsedTime();
       material.uniforms.iTime.value = time;
 
-      renderer.render(scene, camera);
+      try {
+        renderer.render(scene, camera);
+      } catch (error) {
+        console.error(`Render error for ${shader.name}:`, error);
+      }
+
       animationId = requestAnimationFrame(animate);
     };
 

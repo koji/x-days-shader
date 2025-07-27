@@ -59,6 +59,17 @@ This project is built with:
 - React
 - shadcn-ui
 - Tailwind CSS
+- Three.js (for WebGL shader rendering)
+- GLSL shaders
+
+## Shader Loading
+
+The application uses a custom shader loader (`src/lib/shaders.ts`) that handles shader files in both development and production environments:
+
+- **Development**: Shaders are loaded via static imports and bundled with the application
+- **Production**: Shaders are bundled into the main JavaScript bundle, eliminating the need for separate HTTP requests
+
+This approach ensures that shader files are always available and prevents 404 errors when the application is deployed.
 
 ## How can I deploy this project?
 

@@ -16,7 +16,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Fractal',
     fragmentShader: 'fractal001.frag',
     author: 'koji',
-    tags: ['fractal', 'day1'],
+    tags: ['fractal'],
     shaderToyId: 'wftXD7',
   },
   {
@@ -25,7 +25,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Fractal',
     fragmentShader: 'fractal002.frag',
     author: 'koji',
-    tags: ['fractal', 'day2'],
+    tags: ['fractal'],
     shaderToyId: 'tccSzj',
   },
   {
@@ -34,7 +34,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Fractal',
     fragmentShader: 'fractal003.frag',
     author: 'koji',
-    tags: ['fractal', 'day3', 'mandelbrot'],
+    tags: ['fractal', 'mandelbrot'],
     shaderToyId: 'wfcXRf',
   },
   {
@@ -43,7 +43,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Fractal',
     fragmentShader: 'fractal004.frag',
     author: 'koji',
-    tags: ['fractal', 'day4', 'mandelbrot'],
+    tags: ['fractal', 'mandelbrot'],
     shaderToyId: 'wccXzf',
   },
   {
@@ -52,7 +52,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Fractal',
     fragmentShader: 'fractal005.frag',
     author: 'koji',
-    tags: ['fractal', 'day5', 'mandelbrot'],
+    tags: ['fractal', 'mandelbrot'],
     shaderToyId: '3c3SDj',
   },
   {
@@ -61,16 +61,16 @@ export const shaders: ShaderInfo[] = [
     description: 'Fractal with mouse control',
     fragmentShader: 'fractal006.frag',
     author: 'koji',
-    tags: ['fractal', 'day6', 'julia set'],
+    tags: ['fractal', 'julia set'],
     shaderToyId: 'WctXDX',
   },
   {
     id: '3cGXzz',
     name: 'Fractal 007',
     description: 'Fractal',
-    fragmentShader: '',
+    fragmentShader: 'fractal007.frag',
     author: 'koji',
-    tags: ['fractal', 'day7', 'julia set'],
+    tags: ['fractal', 'julia set'],
     shaderToyId: '3cGXzz',
   },
   {
@@ -79,7 +79,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching with a',
     fragmentShader: 'raymarching001.frag',
     author: 'koji',
-    tags: ['raymarching', 'day8'],
+    tags: ['raymarching'],
     shaderToyId: 'tfyXzh',
   },
   {
@@ -88,7 +88,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching',
     fragmentShader: 'raymarching002.frag',
     author: 'koji',
-    tags: ['raymarching', 'day9'],
+    tags: ['raymarching'],
     shaderToyId: '3fVXRy',
   },
   {
@@ -97,7 +97,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching',
     fragmentShader: 'raymarching003.frag',
     author: 'koji',
-    tags: ['raymarching', 'day10'],
+    tags: ['raymarching'],
     shaderToyId: 'tcGSR1',
   },
   {
@@ -106,7 +106,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching',
     fragmentShader: 'raymarching004.frag',
     author: 'koji',
-    tags: ['raymarching', 'day11'],
+    tags: ['raymarching'],
     shaderToyId: 'WcVXWR',
   },
   {
@@ -115,7 +115,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching',
     fragmentShader: 'raymarching005.frag',
     author: 'koji',
-    tags: ['raymarching', 'day12'],
+    tags: ['raymarching'],
     shaderToyId: 'WfVSD1',
   },
   {
@@ -124,7 +124,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching',
     fragmentShader: 'raymarching006.frag',
     author: 'koji',
-    tags: ['raymarching', 'day13'],
+    tags: ['raymarching'],
     shaderToyId: 'WcVXDD',
   },
   {
@@ -133,7 +133,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching',
     fragmentShader: 'raymarching007.frag',
     author: 'koji',
-    tags: ['raymarching', 'day14'],
+    tags: ['raymarching'],
     shaderToyId: '3fVXRy',
   },
   {
@@ -142,7 +142,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching',
     fragmentShader: 'raymarching008.frag',
     author: 'koji',
-    tags: ['raymarching', 'day15'],
+    tags: ['raymarching'],
     shaderToyId: 'wcKSzV',
   },
   {
@@ -151,7 +151,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching',
     fragmentShader: 'raymarching009.frag',
     author: 'koji',
-    tags: ['raymarching', 'day16'],
+    tags: ['raymarching'],
     shaderToyId: 'wcKXRc',
   },
   {
@@ -160,7 +160,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching',
     fragmentShader: 'raymarching010.frag',
     author: 'koji',
-    tags: ['raymarching', 'day17'],
+    tags: ['raymarching'],
     shaderToyId: 'WfKXRd',
   },
   {
@@ -169,7 +169,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Gradation with circles',
     fragmentShader: 'gradation001.frag',
     author: 'koji',
-    tags: ['gradation', 'day18'],
+    tags: ['gradation'],
     shaderToyId: 'wcKXDy',
   },
   {
@@ -178,7 +178,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Gradation',
     fragmentShader: 'gradation002.frag',
     author: 'koji',
-    tags: ['gradation', 'day19'],
+    tags: ['gradation'],
     shaderToyId: '3cKXW3',
   },
   {
@@ -187,7 +187,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching',
     fragmentShader: 'raymarching011.frag',
     author: 'koji',
-    tags: ['raymarching', 'day20'],
+    tags: ['raymarching'],
     shaderToyId: 'wcVXDd',
   },
   {
@@ -196,7 +196,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching',
     fragmentShader: 'raymarching012.frag',
     author: 'koji',
-    tags: ['raymarching', 'day21', 'sdf', 'torus', '3d'],
+    tags: ['raymarching', 'sdf', 'torus', '3d'],
     shaderToyId: 't3c3RH',
   },
   {
@@ -205,7 +205,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching',
     fragmentShader: 'raymarching013.frag',
     author: 'koji',
-    tags: ['raymarching', 'day22', 'sdf', 'torus', '3d'],
+    tags: ['raymarching', 'sdf', 'torus', '3d'],
     shaderToyId: 'tXtGzN',
   },
   {
@@ -214,7 +214,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching',
     fragmentShader: 'raymarching014.frag',
     author: 'koji',
-    tags: ['raymarching', 'day23', 'sdf', 'torus', '3d'],
+    tags: ['raymarching', 'sdf', 'torus', '3d'],
     shaderToyId: 'w3tGDr',
   },
   {
@@ -223,7 +223,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching',
     fragmentShader: 'raymarching015.frag',
     author: 'koji',
-    tags: ['raymarching', 'day24', 'sdf', 'torus', '3d'],
+    tags: ['raymarching', 'sdf', 'torus', '3d'],
     shaderToyId: 'tXtGDr',
   },
   {
@@ -232,7 +232,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching',
     fragmentShader: 'raymarching016.frag',
     author: 'koji',
-    tags: ['raymarching', 'day25', 'sdf', 'torus', '3d'],
+    tags: ['raymarching', 'sdf', 'torus', '3d'],
     shaderToyId: 'wX3GWN',
   },
   {
@@ -241,7 +241,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching',
     fragmentShader: 'raymarching017.frag',
     author: 'koji',
-    tags: ['raymarching', 'day26', 'sdf', 'torus', '3d'],
+    tags: ['raymarching', 'sdf', 'torus', '3d'],
     shaderToyId: 'w3c3WN',
   },
   {
@@ -250,7 +250,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching',
     fragmentShader: 'raymarching018.frag',
     author: 'koji',
-    tags: ['raymarching', 'day27', 'sdf', 'torus', '3d'],
+    tags: ['raymarching', 'sdf', 'torus', '3d'],
     shaderToyId: 'WXdGD7',
   },
   {
@@ -259,7 +259,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching',
     fragmentShader: 'raymarching019.frag',
     author: 'koji',
-    tags: ['raymarching', 'day28', 'sdf', 'torus', '3d', 'french cruller'],
+    tags: ['raymarching', 'sdf', 'torus', '3d', 'french cruller'],
     shaderToyId: 'WXc3zj',
   },
   {
@@ -268,7 +268,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching',
     fragmentShader: 'raymarching020.frag',
     author: 'koji',
-    tags: ['raymarching', 'day29', 'sdf', 'torus', '3d', 'french cruller'],
+    tags: ['raymarching', 'sdf', 'torus', '3d', 'french cruller'],
     shaderToyId: 'WXd3Rf',
   },
   {
@@ -277,7 +277,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching',
     fragmentShader: 'raymarching021.frag',
     author: 'koji',
-    tags: ['raymarching', 'day30', 'sdf', 'torus', '3d', 'french cruller'],
+    tags: ['raymarching', 'sdf', 'torus', '3d', 'french cruller'],
     shaderToyId: 'w333Rl',
   },
   {
@@ -286,7 +286,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Ray marching',
     fragmentShader: 'raymarching022.frag',
     author: 'koji',
-    tags: ['raymarching', 'day31', 'sdf', 'torus', '3d', 'french cruller'],
+    tags: ['raymarching', 'sdf', 'torus', '3d', 'french cruller'],
     shaderToyId: 'wXt3Rs',
   },
   {
@@ -295,7 +295,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Fractal with mouse control',
     fragmentShader: 'fractal007.frag',
     author: 'koji',
-    tags: ['fractal', 'day32'],
+    tags: ['fractal'],
     shaderToyId: 'tXt3D2',
   },
   {
@@ -304,7 +304,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Fractal with mouse control',
     fragmentShader: 'fractal008.frag',
     author: 'koji',
-    tags: ['fractal', 'day33'],
+    tags: ['fractal'],
     shaderToyId: 'WX33Ws',
   },
   {
@@ -313,7 +313,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Moving points',
     fragmentShader: 'movingPoints001.frag',
     author: 'koji',
-    tags: ['points', '3d', 'day34'],
+    tags: ['points', '3d'],
     shaderToyId: 'WXK3RR',
   },
   {
@@ -322,7 +322,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Moving points',
     fragmentShader: 'movingPoints002.frag',
     author: 'koji',
-    tags: ['points', '3d', 'day35'],
+    tags: ['points', '3d'],
     shaderToyId: 'wXVGzh',
   },
 
@@ -332,7 +332,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Moving points',
     fragmentShader: 'movingPoints003.frag',
     author: 'koji',
-    tags: ['points', '3d', 'day36'],
+    tags: ['points', '3d'],
     shaderToyId: 'tXV3zD',
   },
 
@@ -342,7 +342,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Moving points',
     fragmentShader: 'movingPoints004.frag',
     author: 'koji',
-    tags: ['points', '3d', 'day37'],
+    tags: ['points', '3d'],
     shaderToyId: 'W3VGWz',
   },
 
@@ -352,7 +352,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Moving points',
     fragmentShader: 'movingPoints005.frag',
     author: 'koji',
-    tags: ['points', '3d', 'day38'],
+    tags: ['points', '3d'],
     shaderToyId: 't3VGWh',
   },
 
@@ -362,7 +362,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Tetrahedron',
     fragmentShader: 'raymarching023.frag',
     author: 'koji',
-    tags: ['tetrahedron', '3d', 'day39', 'raymarching', 'sdf'],
+    tags: ['tetrahedron', '3d', 'raymarching', 'sdf'],
     shaderToyId: '3XV3DD',
   },
 
@@ -372,7 +372,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Tetrahedron',
     fragmentShader: 'raymarching024.frag',
     author: 'koji',
-    tags: ['tetrahedron', 'sphere', '3d', 'day40', 'raymarching', 'sdf'],
+    tags: ['tetrahedron', 'sphere', '3d', 'raymarching', 'sdf'],
     shaderToyId: '33yGRG',
   },
 
@@ -382,7 +382,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Tetrahedron',
     fragmentShader: 'raymarching025.frag',
     author: 'koji',
-    tags: ['tetrahedron', '3d', 'day41', 'raymarching', 'sdf'],
+    tags: ['tetrahedron', '3d', 'raymarching', 'sdf'],
     shaderToyId: 'WXV3RK',
   },
 
@@ -392,7 +392,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Tetrahedron',
     fragmentShader: 'raymarching026.frag',
     author: 'koji',
-    tags: ['tetrahedron', '3d', 'day42', 'raymarching', 'sdf'],
+    tags: ['tetrahedron', '3d', 'raymarching', 'sdf'],
     shaderToyId: 'tXKGRc',
   },
 
@@ -402,7 +402,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Tetrahedron',
     fragmentShader: 'raymarching027.frag',
     author: 'koji',
-    tags: ['tetrahedron', '3d', 'day43', 'raymarching', 'sdf'],
+    tags: ['tetrahedron', '3d', 'raymarching', 'sdf'],
     shaderToyId: '33y3WG',
   },
 
@@ -412,7 +412,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Tetrahedron',
     fragmentShader: 'raymarching028.frag',
     author: 'koji',
-    tags: ['tetrahedron', 'raymarching', '3d', 'sdf', 'day44'],
+    tags: ['tetrahedron', 'raymarching', '3d', 'sdf'],
     shaderToyId: 'wXGGDV',
   },
 
@@ -422,7 +422,7 @@ export const shaders: ShaderInfo[] = [
     description: '',
     fragmentShader: 'colors001.frag',
     author: 'koji',
-    tags: ['colors', 'raymarching', '3d', 'sdf', 'day45'],
+    tags: ['colors', 'raymarching', '3d', 'sdf'],
     shaderToyId: 'WXyGWd',
   },
 
@@ -432,7 +432,7 @@ export const shaders: ShaderInfo[] = [
     description: 'Tetrahedron',
     fragmentShader: 'raymarching029.frag',
     author: 'koji',
-    tags: ['tetrahedron', 'raymarching', '3d', 'sdf', 'day46'],
+    tags: ['tetrahedron', 'raymarching', '3d', 'sdf'],
     shaderToyId: '3X3XRn',
   },
 
@@ -442,7 +442,7 @@ export const shaders: ShaderInfo[] = [
     description: 'moving multiple octahedrons with different colors',
     fragmentShader: 'movingOctahedron.frag',
     author: 'koji',
-    tags: ['octahedron', 'raymarching', '3d', 'sdf', 'day47'],
+    tags: ['octahedron', 'raymarching', '3d', 'sdf'],
     shaderToyId: 't3dXzH',
   },
   {
@@ -451,7 +451,7 @@ export const shaders: ShaderInfo[] = [
     description: 'moving multiple toruses with different colors',
     fragmentShader: 'movingTorus.frag',
     author: 'koji',
-    tags: ['torus', 'raymarching', '3d', 'sdf', 'day48'],
+    tags: ['torus', 'raymarching', '3d', 'sdf'],
     shaderToyId: 'W3tXRM',
   },
   {
@@ -460,7 +460,7 @@ export const shaders: ShaderInfo[] = [
     description: 'moving multiple boxes with different colors',
     fragmentShader: 'movingBox.frag',
     author: 'koji',
-    tags: ['box', 'raymarching', '3d', 'sdf', 'day49'],
+    tags: ['box', 'raymarching', '3d', 'sdf'],
     shaderToyId: 't3dXDH',
   },
   {
@@ -469,7 +469,7 @@ export const shaders: ShaderInfo[] = [
     description: 'moving multiple tetrahedrons with different colors',
     fragmentShader: 'movingTetrahedron.frag',
     author: 'koji',
-    tags: ['tetrahedron', 'raymarching', '3d', 'sdf', 'day50'],
+    tags: ['tetrahedron', 'raymarching', '3d', 'sdf'],
     shaderToyId: 'tXtXWn',
   },
   {
@@ -479,7 +479,7 @@ export const shaders: ShaderInfo[] = [
       'moving multiple octahedrons and toruses with different colors',
     fragmentShader: 'movintOctahedronTorus.frag',
     author: 'koji',
-    tags: ['octahedron', 'torus', 'raymarching', '3d', 'sdf', 'day51'],
+    tags: ['octahedron', 'torus', 'raymarching', '3d', 'sdf'],
     shaderToyId: 'W33XRS',
   },
   {
@@ -489,15 +489,7 @@ export const shaders: ShaderInfo[] = [
       'moving multiple tetrahedrons, octahedrons and toruses with different colors',
     fragmentShader: 'movingTetrahedronOctahedronTorus.frag',
     author: 'koji',
-    tags: [
-      'tetrahedron',
-      'octahedron',
-      'torus',
-      'raymarching',
-      '3d',
-      'sdf',
-      'day52',
-    ],
+    tags: ['tetrahedron', 'octahedron', 'torus', 'raymarching', '3d', 'sdf'],
     shaderToyId: '3X3XRS',
   },
 ]

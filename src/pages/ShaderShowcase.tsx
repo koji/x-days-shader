@@ -6,6 +6,7 @@ import { shaders } from '../data/shaders';
 import { Input } from '../components/ui/input';
 import { Badge } from '../components/ui/badge';
 import { Search, Palette } from 'lucide-react';
+import { loadShader } from '../lib/shaders';
 
 const ShaderShowcase = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -19,16 +20,19 @@ const ShaderShowcase = () => {
 
       for (const shader of shaders) {
         try {
-          const module = await import(`../shaders/${shader.fragmentShader}`);
-          sources[shader.id] = module.default;
+          const shaderSource = await loadShader(shader.fragmentShader);
+          sources[shader.id] = shaderSource;
         } catch (error) {
           console.error(`Failed to load shader ${shader.fragmentShader}:`, error);
           sources[shader.id] = `
             uniform float iTime;
             uniform vec3 iResolution;
+            uniform vec4 iMouse;
+            
             void main() {
               vec2 uv = gl_FragCoord.xy / iResolution.xy;
-              gl_FragColor = vec4(uv, 0.5 + 0.5 * sin(iTime), 1.0);
+              vec3 col = 0.5 + 0.5 * cos(iTime + uv.xyx + vec3(0,2,4));
+              gl_FragColor = vec4(col, 1.0);
             }
           `;
         }
