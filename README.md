@@ -1,84 +1,45 @@
-# Welcome to your Lovable project
+# X Days Shader
 
-## Project info
+## how to run
 
-**URL**: https://lovable.dev/projects/060137eb-7780-4207-a54a-f4d3ae39ab05
+### install dependencies
 
-## How can I edit this code?
+```shell
+cd x-days-shader
 
-There are several ways of editing your application.
 
-**Use Lovable**
+# bun
+bun install
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/060137eb-7780-4207-a54a-f4d3ae39ab05) and start prompting.
+# pnpm
+pnpm install
 
-Changes made via Lovable will be committed automatically to this repo.
+# npm
+npm install
+```
 
-**Use your preferred IDE**
+### run dev server
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+```shell
+# bun
+bun run dev
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+# pnpm
+pnpm run dev
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# npm
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### build the app
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```shell
+# bun
+bun run build
 
-**Use GitHub Codespaces**
+# pnpm
+pnpm run build
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-- Three.js (for WebGL shader rendering)
-- GLSL shaders
-
-## Shader Loading
-
-The application uses a custom shader loader (`src/lib/shaders.ts`) that handles shader files in both development and production environments:
-
-- **Development**: Shaders are loaded via static imports and bundled with the application
-- **Production**: Shaders are bundled into the main JavaScript bundle, eliminating the need for separate HTTP requests
-
-This approach ensures that shader files are always available and prevents 404 errors when the application is deployed.
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/060137eb-7780-4207-a54a-f4d3ae39ab05) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+# npm
+npm run build
+```
