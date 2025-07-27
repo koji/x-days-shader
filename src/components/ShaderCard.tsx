@@ -18,19 +18,18 @@ export const ShaderCard: React.FC<ShaderCardProps> = ({ shader, fragmentShaderSo
   const clockRef = useRef<THREE.Clock>(new THREE.Clock());
 
   useEffect(() => {
-    if (!canvasRef.current) return;
-
-    // Validate fragment shader source
-    if (!fragmentShaderSource || fragmentShaderSource.trim() === '') {
-      console.warn(`Empty shader source for ${shader.name}`);
+    if (!canvasRef.current) {
+      console.warn(`No canvas ref for ${shader.name}`);
       return;
     }
 
-    // Test if the shader source is actually loaded
-    console.log(`Shader source for ${shader.name}:`, {
-      length: fragmentShaderSource.length,
-      preview: fragmentShaderSource.substring(0, 100)
-    });
+    // Validate fragment shader source
+    if (!fragmentShaderSource || fragmentShaderSource.trim() === '') {
+      console.warn(`Empty shader source for ${shader.name} (ID: ${shader.id})`);
+      return;
+    }
+
+
 
     const canvas = canvasRef.current;
     const renderer = new THREE.WebGLRenderer({
@@ -95,8 +94,6 @@ export const ShaderCard: React.FC<ShaderCardProps> = ({ shader, fragmentShaderSo
       const width = rect.width;
       const height = rect.height;
 
-      console.log(`Resizing canvas for ${shader.name}: ${width}x${height}`);
-
       if (width <= 0 || height <= 0) {
         console.warn(`Canvas has zero or negative dimensions for ${shader.name}: ${width}x${height}`);
         return;
@@ -114,10 +111,7 @@ export const ShaderCard: React.FC<ShaderCardProps> = ({ shader, fragmentShaderSo
     const frameInterval = 1000 / targetFPS;
 
     const animate = () => {
-      if (!renderer || !scene || !camera || !material) {
-        console.warn(`Missing renderer/scene/camera/material for ${shader.name}`);
-        return;
-      }
+      if (!renderer || !scene || !camera || !material) return;
 
       const currentTime = performance.now();
       if (currentTime - lastFrameTime < frameInterval) {

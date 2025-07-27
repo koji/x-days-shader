@@ -1,59 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import { Header } from '../components/Header';
-import { ShaderCard } from '../components/ShaderCard';
+import { VirtualizedShaderGrid } from '../components/VirtualizedShaderGrid';
 import { shaders } from '../data/shaders';
 import { Input } from '../components/ui/input';
 import { Badge } from '../components/ui/badge';
 import { Search, Palette } from 'lucide-react';
-import { loadShader } from '../lib/shaders';
 
 const ShaderShowcase = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const [shaderSources, setShaderSources] = useState<Record<string, string>>({});
-
-  // Load shader sources
-  useEffect(() => {
-    const loadShaders = async () => {
-      const sources: Record<string, string> = {};
-
-      for (const shader of shaders) {
-        try {
-          const shaderSource = await loadShader(shader.fragmentShader);
-          sources[shader.id] = shaderSource;
-        } catch (error) {
-          console.error(`Failed to load shader ${shader.fragmentShader}:`, error);
-          sources[shader.id] = `
-            uniform float iTime;
-            uniform vec3 iResolution;
-            uniform vec4 iMouse;
-            
-            void main() {
-              vec2 uv = gl_FragCoord.xy / iResolution.xy;
-              vec3 col = 0.5 + 0.5 * cos(iTime + uv.xyx + vec3(0,2,4));
-              gl_FragColor = vec4(col, 1.0);
-            }
-          `;
-        }
-      }
-
-      setShaderSources(sources);
-    };
-
-    loadShaders();
-  }, []);
 
   // Get all unique tags
   const allTags = Array.from(new Set(shaders.flatMap(shader => shader.tags)));
-
-  // Filter shaders
-  const filteredShaders = shaders.filter(shader => {
-    const matchesSearch = shader.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      shader.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesTag = !selectedTag || shader.tags.includes(selectedTag);
-    return matchesSearch && matchesTag;
-  });
 
   return (
     <ThemeProvider>
@@ -109,25 +68,12 @@ const ShaderShowcase = () => {
               </div>
             </div>
 
-            {/* Shader Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredShaders.map((shader) => (
-                <ShaderCard
-                  key={shader.id}
-                  shader={shader}
-                  fragmentShaderSource={shaderSources[shader.id] || ''}
-                />
-              ))}
-            </div>
-
-            {/* No Results */}
-            {filteredShaders.length === 0 && (
-              <div className="text-center py-12">
-                <p className="text-muted-foreground">
-                  No shaders found matching your criteria.
-                </p>
-              </div>
-            )}
+            {/* Virtualized Shader Grid */}
+            <VirtualizedShaderGrid
+              shaders={shaders}
+              searchTerm={searchTerm}
+              selectedTag={selectedTag}
+            />
           </div>
         </main>
       </div>
