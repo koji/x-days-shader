@@ -126,7 +126,7 @@ void main()
 
     vec3 hitPos;
     int objID;
-    //float dist = rayMarch(ro, rd, 100.0, 100, hitPos, objID);
+    
     float dist = rayMarch(ro, rd, 100.0, 256, hitPos, objID);
 
     vec3 finalColor = vec3(0.8);
