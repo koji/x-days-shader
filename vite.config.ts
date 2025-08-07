@@ -16,9 +16,7 @@ export default defineConfig(({ mode }) => ({
       exclude: undefined,
       warnDuplicatedImports: true,
       defaultExtension: 'glsl',
-      compress: false,
       watch: true,
-      root: '/',
     }),
   ].filter(Boolean),
   resolve: {

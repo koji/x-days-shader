@@ -59,7 +59,7 @@ float map(vec3 p) {
         
         float rot_angle = iTime * (1.0 + fi * 0.3);
         p_local.xz *= mat2(cos(rot_angle), -sin(rot_angle), sin(rot_angle), cos(rot_angle));
-        p_local.xy *= mat2(cos(rot_angle * 0.7), -sin(rot_angle * 0.7), sin(rot_angle * 0.7), cos(rot_angle * 0.7));
+        p_local.xy *= mat2(cos(rot_angle*0.7), -sin(rot_angle*0.7), sin(rot_angle*0.7), cos(rot_angle*0.7));
         
         float shape_dist;
         if(i<20){
@@ -70,8 +70,15 @@ float map(vec3 p) {
             shape_dist = max(sdTorus(p_local, vec2(0.3,0.2)), -sdBox(p_local, vec3(0.4, 0.5, 0.25)));
         }
 
-        res = opSmoothUnion(res, shape_dist, 0.75);
+        res = opSmoothUnion(res, shape_dist, 0.5);
     }
+    
+    float spike_freq = 10.0; // 密度。値を大きくするとスパイクが細かくなる
+    float spike_amp = 0.2;  // 高さ。値を大きくするとスパイクが長くなる
+    
+    vec3 q = p * spike_freq;
+    float spikes = sin(q.x) * sin(q.y) * sin(q.z);
+    res -= spikes * spike_amp + cos(iTime)*0.5 + 0.25;
     
     return res;
 }

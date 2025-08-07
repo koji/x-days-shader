@@ -21,7 +21,7 @@ float sdBox(vec3 p, vec3 b) {
 float sdTetrahedron( vec3 p, float g )
 {
     //float angle = 2.86;
-    float angle = 2.86 + iTime * 0.75;
+    float angle = 0.86 + iTime * 0.75;
     float c = cos(angle);
     float s = sin(angle);
     mat2 rot = mat2(c, -s, s, c);
@@ -44,31 +44,35 @@ float opSmoothUnion(float d1, float d2, float k) {
 float map(vec3 p) {
     float res = 1e9;
     
-    for (int i = 0; i < 60; i++) {
+    for (int i = 0; i < 8; i++) {
         float fi = float(i);
         float time = iTime * (0.5 + fi * 0.1);
         
         
-        vec3 center = vec3(
-            sin(time + fi * 1.57),
-            cos(time * 0.8 + fi * 2.0),
-            sin(time * 1.2 - fi * 1.0)
-        ) * 1.5;
+        vec3 p_local = vec3(atan(p.y/.2,p.x)*0.5, p.z/1.975, length(p.xy)-2.25-fi*0.12);
+
         
-        vec3 p_local = p - center;
         
         float rot_angle = iTime * (1.0 + fi * 0.3);
         p_local.xz *= mat2(cos(rot_angle), -sin(rot_angle), sin(rot_angle), cos(rot_angle));
-        p_local.xy *= mat2(cos(rot_angle * 0.7), -sin(rot_angle * 0.7), sin(rot_angle * 0.7), cos(rot_angle * 0.7));
+        p_local.xy *= mat2(cos(rot_angle*0.7), -sin(rot_angle*0.7), sin(rot_angle*0.7), cos(rot_angle*0.7));
         
         float shape_dist;
-        if(i<20){
+        /*
+        if(i<5){
             shape_dist = max(sdOctahedron(p_local, 0.7), -sdBox(p_local, vec3(0.2, 0.3, 0.5)));
-        } else if(i>=21 && i<35) {
+        } else if(i>=5 && i<9) {
             shape_dist = min(sdTetrahedron(p_local, 0.3), sdBox(p_local, vec3(0.5, 0.4, 0.3)));
         } else {
             shape_dist = max(sdTorus(p_local, vec2(0.3,0.2)), -sdBox(p_local, vec3(0.4, 0.5, 0.25)));
         }
+        */
+        if(i<4) {
+            shape_dist = sdOctahedron(p_local, 0.7); 
+        } else {
+            shape_dist = sdTetrahedron(p_local, 0.3);
+        }
+        
 
         res = opSmoothUnion(res, shape_dist, 0.75);
     }
@@ -91,7 +95,7 @@ void main() {
 
 
     float angle = iTime * 0.15;
-    vec3 ro = vec3(sin(angle) * 5.0, 1.5, cos(angle) * 8.0);
+    vec3 ro = vec3(sin(angle) * 12.0, 1.5, cos(angle) * 8.0);
     vec3 ta = vec3(0.0, 0.0, 0.0);
     vec3 ww = normalize(ta - ro);
     vec3 uu = normalize(cross(vec3(0.0, 1.0, 0.0), ww));

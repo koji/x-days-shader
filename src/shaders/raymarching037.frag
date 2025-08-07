@@ -72,7 +72,7 @@ float map(vec3 p) {
         }
         */
         if(i<30) {
-            shape_dist = sdOctahedron(p_local, 0.7); 
+            shape_dist = sdOctahedron(p_local, 0.7);
         } else {
             shape_dist = sdTetrahedron(p_local, 0.3);
         }
