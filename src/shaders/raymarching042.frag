@@ -59,7 +59,6 @@ float spikes(vec3 p) {
     float wave = sin(q.x) * sin(q.y) * sin(q.z);
     float wave_sign = sign(wave);
     float sharp_wave = pow(abs(wave), 18.0);
-    //sharp_wave *= wave_sign;
     
     return (sharp_wave + cos(iTime)) * spike_amp;
 }
