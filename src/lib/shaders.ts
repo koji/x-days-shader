@@ -31,6 +31,13 @@ import raymarching026 from '../shaders/raymarching026.frag'
 import raymarching027 from '../shaders/raymarching027.frag'
 import raymarching028 from '../shaders/raymarching028.frag'
 import raymarching029 from '../shaders/raymarching029.frag'
+import raymarching036 from '../shaders/raymarching036.frag'
+import raymarching037 from '../shaders/raymarching037.frag'
+import raymarching038 from '../shaders/raymarching038.frag'
+import raymarching039 from '../shaders/raymarching039.frag'
+import raymarching040 from '../shaders/raymarching040.frag'
+import raymarching041 from '../shaders/raymarching041.frag'
+import raymarching042 from '../shaders/raymarching042.frag'
 import fractal001 from '../shaders/fractal001.frag'
 import fractal002 from '../shaders/fractal002.frag'
 import fractal003 from '../shaders/fractal003.frag'
@@ -51,7 +58,7 @@ import movingPoints003 from '../shaders/movingPoints003.frag'
 import movingPoints004 from '../shaders/movingPoints004.frag'
 import movingPoints005 from '../shaders/movingPoints005.frag'
 import movingTetrahedron from '../shaders/movingTetrahedron.frag'
-import movingTetrahedronOctahedronTorus from '../shaders/movingTetrahedronOctahedronTorus.frag'
+import raymarching035 from '../shaders/raymarching035.frag'
 import movingTorus from '../shaders/movingTorus.frag'
 import movintOctahedronTorus from '../shaders/movintOctahedronTorus.frag'
 
@@ -86,6 +93,13 @@ const shaderMap: Record<string, string> = {
   'raymarching027.frag': raymarching027,
   'raymarching028.frag': raymarching028,
   'raymarching029.frag': raymarching029,
+  'raymarching036.frag': raymarching036,
+  'raymarching037.frag': raymarching037,
+  'raymarching038.frag': raymarching038,
+  'raymarching039.frag': raymarching039,
+  'raymarching040.frag': raymarching040,
+  'raymarching041.frag': raymarching041,
+  'raymarching042.frag': raymarching042,
   'fractal001.frag': fractal001,
   'fractal002.frag': fractal002,
   'fractal003.frag': fractal003,
@@ -106,21 +120,41 @@ const shaderMap: Record<string, string> = {
   'movingPoints004.frag': movingPoints004,
   'movingPoints005.frag': movingPoints005,
   'movingTetrahedron.frag': movingTetrahedron,
-  'movingTetrahedronOctahedronTorus.frag': movingTetrahedronOctahedronTorus,
+  'raymarching035.frag': raymarching035,
   'movingTorus.frag': movingTorus,
   'movintOctahedronTorus.frag': movintOctahedronTorus,
 }
 
 export const loadShader = async (shaderName: string): Promise<string> => {
-  console.log(`Loading shader: ${shaderName}`);
-  
+  console.log(`Loading shader: ${shaderName}`)
+
   // Check if we have the shader in our static map
   if (shaderMap[shaderName]) {
-    console.log(`Shader ${shaderName} found in static map`);
-    return shaderMap[shaderName]
+    console.log(`Shader ${shaderName} found in static map`)
+    const shaderContent = shaderMap[shaderName]
+
+    // Debug: log the first 200 characters of the shader content
+    console.log(
+      `Shader ${shaderName} content preview:`,
+      shaderContent.substring(0, 200)
+    )
+
+    // Validate that the content is actually a shader (not HTML)
+    if (
+      shaderContent.includes('<!DOCTYPE html>') ||
+      shaderContent.includes('<html')
+    ) {
+      console.error(
+        `Shader ${shaderName} contains HTML content, this is invalid`
+      )
+      console.error(`Full content:`, shaderContent)
+      throw new Error(`Invalid shader content for ${shaderName}`)
+    }
+
+    return shaderContent
   }
 
-  console.log(`Shader ${shaderName} not found in static map, trying fetch...`);
+  console.log(`Shader ${shaderName} not found in static map, trying fetch...`)
 
   // Fallback: try to fetch from the server (for development or if shader is missing from map)
   try {
@@ -129,7 +163,16 @@ export const loadShader = async (shaderName: string): Promise<string> => {
       throw new Error(`Failed to load shader: ${response.statusText}`)
     }
     const shaderText = await response.text()
-    console.log(`Shader ${shaderName} loaded via fetch`);
+
+    // Validate that the fetched content is actually a shader
+    if (
+      shaderText.includes('<!DOCTYPE html>') ||
+      shaderText.includes('<html')
+    ) {
+      throw new Error(`Fetched content is HTML, not a shader`)
+    }
+
+    console.log(`Shader ${shaderName} loaded via fetch`)
     return shaderText
   } catch (error) {
     console.error(`Failed to load shader ${shaderName}:`, error)
