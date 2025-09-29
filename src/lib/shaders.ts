@@ -38,6 +38,11 @@ import raymarching039 from '../shaders/raymarching039.frag'
 import raymarching040 from '../shaders/raymarching040.frag'
 import raymarching041 from '../shaders/raymarching041.frag'
 import raymarching042 from '../shaders/raymarching042.frag'
+import UnstableArtifact from '../shaders/UnstableArtifact.frag'
+import ResonantSurface from '../shaders/ResonantSurface.frag'
+import ChromaticNormalField from '../shaders/ChromaticNormalField.frag'
+import EffervescentElixir from '../shaders/EffervescentElixir.frag'
+import PulsatingLattice from '../shaders/PulsatingLattice.frag'
 import fractal001 from '../shaders/fractal001.frag'
 import fractal002 from '../shaders/fractal002.frag'
 import fractal003 from '../shaders/fractal003.frag'
@@ -100,6 +105,11 @@ const shaderMap: Record<string, string> = {
   'raymarching040.frag': raymarching040,
   'raymarching041.frag': raymarching041,
   'raymarching042.frag': raymarching042,
+  'UnstableArtifact.frag': UnstableArtifact,
+  'ResonantSurface.frag': ResonantSurface,
+  'ChromaticNormalField.frag': ChromaticNormalField,
+  'EffervescentElixir.frag': EffervescentElixir,
+  'PulsatingLattice.frag': PulsatingLattice,
   'fractal001.frag': fractal001,
   'fractal002.frag': fractal002,
   'fractal003.frag': fractal003,

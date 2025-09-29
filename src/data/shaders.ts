@@ -563,4 +563,54 @@ export const shaders: ShaderInfo[] = [
     tags: ['box', 'raymarching', '3d', 'sdf', 'spikes'],
     shaderToyId: 't3KXDR',
   },
+  {
+    id: 'tXyXWW',
+    name: 'Unstable Artifact',
+    description:
+      'A monochrome torus writhes with instability, its surface constantly shifting between a fluid, metaball-like form and a sharp, vertical glitch effect. This creates a chaotic visual where an organic shape appears to be undergoing digital corruption and deco',
+    fragmentShader: 'UnstableArtifact.frag',
+    author: 'koji',
+    tags: ['monochrome', 'torus', 'raymarching', '3d', 'sdf', 'spikes'],
+    shaderToyId: 'tXyXWW',
+  },
+  {
+    id: 'WXVSDm',
+    name: 'Resonant Surface',
+    description:
+      'A simple rotating plane is transformed into a dynamic, resonant surface. Rendered in stark monochrome, its face is agitated by complex, high-frequency wave patterns that create detailed ripples and interference. ',
+    fragmentShader: 'ResonantSurface.frag',
+    author: 'koji',
+    tags: ['monochrome', 'torus', 'raymarching', '3d', 'sdf', 'spikes'],
+    shaderToyId: 'WXVSDm',
+  },
+  {
+    id: '33ySzV',
+    name: 'Chromatic Normal Field',
+    description:
+      "The vibrant, shifting colors are a direct visualization of the surface's normal vectors, a diagnostic technique used in 3D graphics to show the orientation of a surface.  This gives the effect the appearance of a dynamic, chromatic topology map",
+    fragmentShader: 'ChromaticNormalField.frag',
+    author: 'koji',
+    tags: ['monochrome', 'torus', 'raymarching', '3d', 'sdf', 'spikes'],
+    shaderToyId: '33ySzV',
+  },
+  {
+    id: 't3GSRK',
+    name: 'Effervescent Elixir',
+    description:
+      'A mesmerizing form combines a core of viscous, flowing liquid with a swarming cloud of effervescent particles.  The object perpetually morphs, dissolves, and reforms in a captivating dance of creation.',
+    fragmentShader: 'EffervescentElixir.frag',
+    author: 'koji',
+    tags: ['monochrome', 'torus', 'raymarching', '3d', 'sdf', 'spikes'],
+    shaderToyId: 't3GSRK',
+  },
+  {
+    id: 'wXVSR3',
+    name: 'Pulsating Lattice',
+    description:
+      'This shader visualizes a complex geometric structure, reminiscent of a hypercube or a crystal lattice, rendered entirely as a point cloud. The entire structure rotates smoothly in space, while each individual point oscillates with a subtle, pulse.',
+    fragmentShader: 'PulsatingLattice.frag',
+    author: 'koji',
+    tags: ['monochrome', 'torus', 'raymarching', '3d', 'sdf', 'spikes'],
+    shaderToyId: 'wXVSR3',
+  },
 ]
