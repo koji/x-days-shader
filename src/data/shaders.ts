@@ -610,7 +610,17 @@ export const shaders: ShaderInfo[] = [
       'This shader visualizes a complex geometric structure, reminiscent of a hypercube or a crystal lattice, rendered entirely as a point cloud. The entire structure rotates smoothly in space, while each individual point oscillates with a subtle, pulse.',
     fragmentShader: 'PulsatingLattice.frag',
     author: 'koji',
-    tags: ['monochrome', 'torus', 'raymarching', '3d', 'sdf', 'spikes'],
+    tags: ['cube', 'box', 'raymarching', '3d', 'sdf'],
     shaderToyId: 'wXVSR3',
+  },
+  {
+    id: 'W3yXWy',
+    name: 'Lattice Synapse',
+    description:
+      'Building upon a shimmering point-cloud lattice, this shader introduces a dynamic energy flow. The structure, reminiscent of a hypercube, is composed of oscillating points that give it a living quality.',
+    fragmentShader: 'LatticeSynapse.frag',
+    author: 'koji',
+    tags: ['cube', 'box', 'raymarching', '3d', 'sdf'],
+    shaderToyId: 'W3yXWy',
   },
 ]
