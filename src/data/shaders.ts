@@ -623,4 +623,14 @@ export const shaders: ShaderInfo[] = [
     tags: ['cube', 'box', 'raymarching', '3d', 'sdf'],
     shaderToyId: 'W3yXWy',
   },
+  {
+    id: 'w3lyzH',
+    name: 'Morphing Cyber-Shard',
+    description:
+      'This shader features a dark, amorphous 3D object that continuously morphs and rotates. Its surface is covered with a glowing, cyan-colored network resembling a Voronoi diagram. Select cells within this digital pattern pulse with a bright, energetic light, giving the impression of living circuitry or a shifting alien artifact.',
+    fragmentShader: 'MorphingCyberShard.frag',
+    author: 'koji',
+    tags: ['morphing', 'cybershard', 'box', 'raymarching', '3d', 'sdf'],
+    shaderToyId: 'w3lyzH',
+  },
 ]

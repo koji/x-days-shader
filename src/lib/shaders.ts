@@ -44,6 +44,7 @@ import ChromaticNormalField from '../shaders/ChromaticNormalField.frag'
 import EffervescentElixir from '../shaders/EffervescentElixir.frag'
 import PulsatingLattice from '../shaders/PulsatingLattice.frag'
 import LatticeSynapse from '../shaders/LatticeSynapse.frag'
+import MorphingCyberShard from '../shaders/MorphingCyberShard.frag'
 import fractal001 from '../shaders/fractal001.frag'
 import fractal002 from '../shaders/fractal002.frag'
 import fractal003 from '../shaders/fractal003.frag'
@@ -112,6 +113,7 @@ const shaderMap: Record<string, string> = {
   'EffervescentElixir.frag': EffervescentElixir,
   'PulsatingLattice.frag': PulsatingLattice,
   'LatticeSynapse.frag': LatticeSynapse,
+  'MorphingCyberShard.frag': MorphingCyberShard,
   'fractal001.frag': fractal001,
   'fractal002.frag': fractal002,
   'fractal003.frag': fractal003,
