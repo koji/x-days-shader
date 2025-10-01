@@ -633,4 +633,22 @@ export const shaders: ShaderInfo[] = [
     tags: ['morphing', 'cybershard', 'box', 'raymarching', '3d', 'sdf'],
     shaderToyId: 'w3lyzH',
   },
+  {
+    id: '3f2fzc',
+    name: 'Deforming Hex-Grid Sphere',
+    description:
+      'This shader showcases a 3D sphere whose surface is in a constant state of organic, liquid-like motion. The object is covered in a glowing hexagonal grid that is perfectly mapped to its undulating surface.',
+    fragmentShader: 'DeformingHexGridSphere.frag',
+    author: 'koji',
+    tags: [
+      'morphing',
+      'cybershard',
+      'sphere',
+      'hexagon',
+      'raymarching',
+      '3d',
+      'sdf',
+    ],
+    shaderToyId: '3f2fzc',
+  },
 ]
