@@ -651,4 +651,14 @@ export const shaders: ShaderInfo[] = [
     ],
     shaderToyId: '3f2fzc',
   },
+  {
+    id: '3cXfDn',
+    name: 'Binary Dance',
+    description:
+      'A red and blue capsule perform an endless, interactive dance, creating a smooth focal point within a chaotic cascade of colorful digital rain.',
+    fragmentShader: 'BinaryDance.frag',
+    author: 'koji',
+    tags: ['morphing', 'capsule', 'rain', 'raymarching', '3d', 'sdf'],
+    shaderToyId: '3cXfDn',
+  },
 ]
